@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './ProductList.css';
 import CartItem from './CartItem';
-import AboutUs from './AboutUs';
 import { addItem } from './CartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartCount } from './CartSlice';
+import App from './App';
 
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
-    const [showAboutUs, setShowAboutUs] = useState(false); // State to control visibility of About Us
+    const [showApp, setShowApp] = useState(false); // State to control visibility of About Us
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
     const cartCount = useSelector(selectCartCount);
@@ -245,12 +245,12 @@ function ProductList() {
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); 
-        setShowAboutUs(false); // Hide About Us when cart is shown
+        setShowApp(false); // Hide About Us when cart is shown
     };
 
     const handleAboutUsClick = (e) => {
         e.preventDefault();
-        setShowAboutUs(true); // Show About Us section
+        setShowApp(true); // Show About Us section
         setShowCart(false); // Hide cart
     };
 
@@ -265,13 +265,13 @@ function ProductList() {
     const handleContinueShopping = (e) => {
         e.preventDefault();
         setShowCart(false);
-        setShowAboutUs(false); // Hide About Us when continuing shopping
+        setShowApp(false); // Hide About Us when continuing shopping
     };
 
     return (
         <div>
             {/* Conditionally render the navbar */}
-            {!showAboutUs && (
+            {!showApp && (
                 <div className="navbar" style={styleObj}>
                     <div className="tag">
                         <div className="luxury">
@@ -286,7 +286,7 @@ function ProductList() {
                     </div>
                     <div style={styleObjUl}>
                         <div>
-                            <a href="#" onClick={(e) => { e.preventDefault(); setShowAboutUs(false); }} style={styleA}>Plants</a>
+                            <a href="#" onClick={(e) => { e.preventDefault(); setShowApp(false); }} style={styleA}>Plants</a>
                         </div>
                         <div id="cartIcon">
                             <a href="#" onClick={handleCartClick} style={styleA}>
@@ -301,8 +301,8 @@ function ProductList() {
             )}
 
             {/* Conditional Rendering Logic */}
-            {showAboutUs ? (
-                <AboutUs /> // Render About Us if this state is true
+            {showApp ? (
+                <App /> // Render About Us if this state is true
             ) : showCart ? (
                 <CartItem onContinueShopping={handleContinueShopping} />
             ) : (
