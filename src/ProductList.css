@@ -39,6 +39,20 @@ body {
    
 }
 
+#cartIcon {
+    position: relative;
+    height: 100%;
+    width: 68px;
+}
+
+.cartElement{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
 /* Product Grid */
 .product-grid {
     display:flex;
