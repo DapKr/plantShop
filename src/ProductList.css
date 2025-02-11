@@ -230,9 +230,9 @@ body {
   }
  
   .product-button:disabled {
-    background-color: grey; /* Grey when product is added */
+    background-color: gray;
   }  
-  
+
   .product-button.added-to-cart {
     background-color: grey; /* Grey when product is added */
   }
